@@ -71,7 +71,7 @@ courses: {compsci: {week: 26}}
         })
             .then(response => {
                 if (response.ok) {
-                window.location.href = '/frontTri2/login/'; // Redirect upon successful user creation
+                suvivability()
             } else {
                 console.error('User creation failed');
                 alert("User Creation failed. Try again.");
