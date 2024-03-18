@@ -13,20 +13,34 @@ courses: {compsci: {week: 26}}
             <input type="text" name="name" id="name" required>
         </label></p>
         <p><label>
-            Age:
-            <input type="text" name="age" id="age" required>
+            Pclass:
+            <input type="text" name="pclass" id="pclass" required>
         </label></p>
         <p><label>
             Sex:
             <input type="text" name="sex" id="sex" required>
         </label></p>
+            Age:
+            <input type="text" name="age" id="age" required>
         <p><label>
-            Class:
-            <input type="text" name="class" id="class" required>
+            Sibsp:
+            <input type="text" name="sibsp" id="sibsp" required>
         </label></p>
         <p><label>
-            Fair:
-            <input type="text" name="fair" id="fair" required>
+            Parch:
+            <input type="text" name="parch" id="parch" required>
+        </label></p>
+        <p><label>
+            Fare:
+            <input type="text" name="fare" id="fare" required>
+        </label></p>
+        <p><label>
+            Embarked:
+            <input type="text" name="embarked" id="embarked" required>
+        </label></p>
+        <p><label>
+            Alone:
+            <input type="text" name="alone" id="alone" required>
         </label></p>
         <button type="button" onclick="create_user()">Submit</button>
     </form>
@@ -37,11 +51,14 @@ courses: {compsci: {week: 26}}
 <table id="userTable">
 	<tr>
 		<th>Name</th>
+        <th>pclass</th>
 		<th>Sex</th>
 		<th>Age</th>
-		<th>Class</th>
-		<th>Fair</th>
-		<th>Survived</th>
+		<th>Sibsp</th>
+		<th>Parch</th>
+		<th>Fare</th>
+        <th>Embarked</th>
+        <th>Alone?</th>
 	</tr>
 </table>
 
@@ -49,19 +66,27 @@ courses: {compsci: {week: 26}}
     //user creation
 	function create_user(){
         const name = document.getElementById('name').value;// DEFINE VALUES
+        const pclass =  document.getElementById('pclass').value;
+        const sex =  document.getElementById('sex').value;
         const age =  document.getElementById('age').value;
-        const sex =  document.getElementById('age').value;
-        const class = document.getElementById('class').value;
-        const fair = document.getElementById('fair').value;
+        const sibsp = document.getElementById('sibsp').value;
+        const parch = document.getElementById('parch').value;
+        const fare = document.getElementById('fare').value;
+        const embarked = document.getElementById('embarked').value;
+        const alone = document.getElementById('alone').value;
         const formData = {
             "name": name,
-            "age": age,
+            "pclass": pclass,
             "sex": sex,
-            "class": class,
-            "fair": fair,
+            "age": age,
+            "sibsp": sibsp,
+            "parch": parch,
+            "fare": fare,
+            "embarked": embarked,
+            "alone": alone,
             // Add other form fields as needed
         };            
-        fetch('http://127.0.0.1:8086/api/titanic/', {
+        fetch('http://127.0.0.1:8086/api/jokes/create', {
 
             method: 'POST',
             headers: {
@@ -82,7 +107,7 @@ courses: {compsci: {week: 26}}
         });
     }
 
-	function suvivability() {
-		//run for newest created user to get suvivability outcome.
-	}
+	function survivability(user) {
+    //run for newest created user to get suvivability outcome.
+    }
 </script>
