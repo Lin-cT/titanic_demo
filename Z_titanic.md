@@ -48,6 +48,11 @@ courses: {compsci: {week: 26}}
     </form>
 </div>
 
+<div id="probabilities">
+    <p>Survival Probability: <span id="survivalProbability"></span></p>
+    <p>Death Probability: <span id="deathProbability"></span></p>
+</div>
+
 <!-- Table -->
 <h2>Titanic Records</h2>
 <table id="userTable">
@@ -110,6 +115,11 @@ courses: {compsci: {week: 26}}
             const deathProbabilityNumeric = parseFloat(deathProbability);
             console.log("Survival Probability:", survivalProbabilityNumeric);
             console.log("Death Probability:", deathProbabilityNumeric);
+            document.getElementById('survivalProbability').textContent = survivalProbabilityNumeric.toFixed(2);
+            document.getElementById('deathProbability').textContent = deathProbabilityNumeric.toFixed(2);
+
+
+
         })
         .catch(error => {
             console.error('Error:', error);
