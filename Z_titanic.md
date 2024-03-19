@@ -20,8 +20,10 @@ courses: {compsci: {week: 26}}
             Sex:
             <input type="text" name="sex" id="sex" required>
         </label></p>
+        <p><label>
             Age:
             <input type="text" name="age" id="age" required>
+        </label></p>
         <p><label>
             Sibsp:
             <input type="text" name="sibsp" id="sibsp" required>
@@ -49,31 +51,32 @@ courses: {compsci: {week: 26}}
 <!-- Table -->
 <h2>Titanic Records</h2>
 <table id="userTable">
-	<tr>
-		<th>Name</th>
-        <th>pclass</th>
-		<th>Sex</th>
-		<th>Age</th>
-		<th>Sibsp</th>
-		<th>Parch</th>
-		<th>Fare</th>
+    <tr>
+        <th>Name</th>
+        <th>Pclass</th>
+        <th>Sex</th>
+        <th>Age</th>
+        <th>Sibsp</th>
+        <th>Parch</th>
+        <th>Fare</th>
         <th>Embarked</th>
         <th>Alone?</th>
-	</tr>
+    </tr>
 </table>
 
 <script>
-    //user creation
-	function create_user(){
-        const name = document.getElementById('name').value;// DEFINE VALUES
-        const pclass =  document.getElementById('pclass').value;
-        const sex =  document.getElementById('sex').value;
-        const age =  document.getElementById('age').value;
+    // User creation
+    function create_user() {
+        const name = document.getElementById('name').value;
+        const pclass = document.getElementById('pclass').value;
+        const sex = document.getElementById('sex').value;
+        const age = document.getElementById('age').value;
         const sibsp = document.getElementById('sibsp').value;
         const parch = document.getElementById('parch').value;
         const fare = document.getElementById('fare').value;
         const embarked = document.getElementById('embarked').value;
         const alone = document.getElementById('alone').value;
+        
         const formData = {
             "name": name,
             "pclass": pclass,
@@ -83,31 +86,34 @@ courses: {compsci: {week: 26}}
             "parch": parch,
             "fare": fare,
             "embarked": embarked,
-            "alone": alone,
-            // Add other form fields as needed
-        };            
+            "alone": alone
+        };
+        
         fetch('http://127.0.0.1:8086/api/jokes/create', {
-
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(formData)
         })
-            .then(response => {
-                if (response.ok) {
-                suvivability()
+        .then(response => {
+            if (response.ok) {
+                return response.json();
             } else {
-                console.error('User creation failed');
-                alert("User Creation failed. Try again.");
+                throw new Error('User creation failed');
             }
+        })
+        .then(data => {
+            const survivalProbability = data.alive_proba;
+            const deathProbability = data.dead_proba;
+            const survivalProbabilityNumeric = parseFloat(survivalProbability);
+            const deathProbabilityNumeric = parseFloat(deathProbability);
+            console.log("Survival Probability:", survivalProbabilityNumeric);
+            console.log("Death Probability:", deathProbabilityNumeric);
         })
         .catch(error => {
             console.error('Error:', error);
+            alert("User Creation failed. Try again.");
         });
-    }
-
-	function survivability(user) {
-    //run for newest created user to get suvivability outcome.
     }
 </script>
