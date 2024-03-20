@@ -66,6 +66,8 @@ courses: {compsci: {week: 26}}
         <th>Fare</th>
         <th>Embarked</th>
         <th>Alone?</th>
+        <th>Survival Chance</th>
+        <th>Survival Chance</th>
     </tr>
 </table>
 
@@ -108,6 +110,7 @@ courses: {compsci: {week: 26}}
                 throw new Error('User creation failed');
             }
         })
+        //pulls data of probability of surviving and dying
         .then(data => {
             const survivalProbability = data.alive_proba;
             const deathProbability = data.dead_proba;
@@ -118,12 +121,27 @@ courses: {compsci: {week: 26}}
             document.getElementById('survivalProbability').textContent = survivalProbabilityNumeric.toFixed(2);
             document.getElementById('deathProbability').textContent = deathProbabilityNumeric.toFixed(2);
 
-
-
+            addRowToTable(formData, survivalProbabilityNumeric, deathProbabilityNumeric);
         })
         .catch(error => {
             console.error('Error:', error);
             alert("User Creation failed. Try again.");
         });
+    }
+    //adds data to table
+    function addRowToTable(data, survivalProbability, deathProbability) {
+        const table = document.getElementById('userTable');
+
+        const row = table.insertRow(-1); // Insert a new row at the end of the table
+
+        const cells = ['name', 'pclass', 'sex', 'age', 'sibsp', 'parch', 'fare', 'embarked', 'alone'];
+        cells.forEach(cell => {
+            const newCell = row.insertCell(-1);
+            newCell.textContent = data[cell];
+        });
+        const survivalCell = row.insertCell(-1);
+        survivalCell.textContent = survivalProbability.toFixed(2);
+        const deathCell = row.insertCell(-1);
+        deathCell.textContent = deathProbability.toFixed(2);
     }
 </script>
