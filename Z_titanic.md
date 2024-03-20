@@ -58,13 +58,13 @@ courses: {compsci: {week: 26}}
 <table id="userTable">
     <tr>
         <th>Name</th>
-        <th>Pclass</th>
+        <th>Pclass</th> <!-- passanger class -->
         <th>Sex</th>
         <th>Age</th>
-        <th>Sibsp</th>
-        <th>Parch</th>
+        <th>Sibsp</th> <!-- siblings/spouses on board -->
+        <th>Parch</th> <!-- parent/children on board -->
         <th>Fare</th>
-        <th>Embarked</th>
+        <th>Embarked</th> <!-- coming from ex: Southampton -->
         <th>Alone?</th>
         <th>Survival Chance</th>
         <th>Death Chance</th>
