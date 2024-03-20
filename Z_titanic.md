@@ -67,7 +67,7 @@ courses: {compsci: {week: 26}}
         <th>Embarked</th>
         <th>Alone?</th>
         <th>Survival Chance</th>
-        <th>Survival Chance</th>
+        <th>Death Chance</th>
     </tr>
 </table>
 
