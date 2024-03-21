@@ -13,23 +13,32 @@ courses: {compsci: {week: 26}}
             <input type="text" name="name" id="name" required>
         </label></p>
         <p><label>
-            Pclass:
-            <input type="text" name="pclass" id="pclass" required>
-        </label></p>
-        <p><label>
+            Passenger Class:
+            <select name="pclass" id="pclass" required>
+                <option value=""> </option> <!-- Blank value -->
+                <option value="1">1st Class</option>
+                <option value="2">2nd Class</option>
+                <option value="3">3rd Class</option>
+            </select>
+        <br>
+        <br>
             Sex:
-            <input type="text" name="sex" id="sex" required>
-        </label></p>
-        <p><label>
+            <select name="sex" id="sex" required>
+                <option value=""> </option> <!-- Blank value -->
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        <br>
+        <br>
             Age:
             <input type="text" name="age" id="age" required>
         </label></p>
         <p><label>
-            Sibsp:
+            Number of Siblings/ Spouses:
             <input type="text" name="sibsp" id="sibsp" required>
         </label></p>
         <p><label>
-            Parch:
+            Number of Parents or Children on Board:
             <input type="text" name="parch" id="parch" required>
         </label></p>
         <p><label>
@@ -37,13 +46,22 @@ courses: {compsci: {week: 26}}
             <input type="text" name="fare" id="fare" required>
         </label></p>
         <p><label>
-            Embarked:
-            <input type="text" name="embarked" id="embarked" required>
+            Embarked From:
+            <select name="embarked" id="embarked" required>
+                <option value=""> </option> <!-- Blank value -->
+                <option value="S">Southampton</option>
+                <option value="C">Cherbourg</option>
+                <option value="Q">Queenstown</option>
+            </select>
         </label></p>
-        <p><label>
-            Alone:
-            <input type="text" name="alone" id="alone" required>
-        </label></p>
+            Alone?:
+            <select name="alone" id="alone" required>
+                <option value=""> </option> <!-- Blank value -->
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        <br>
+        <br>
         <button type="button" onclick="create_user()">Submit</button>
     </form>
 </div>
@@ -96,7 +114,7 @@ courses: {compsci: {week: 26}}
             "alone": alone
         };
         
-        fetch('http://127.0.0.1:8086/api/jokes/create', {
+        fetch('http://127.0.0.1:8086/api/titanic/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
